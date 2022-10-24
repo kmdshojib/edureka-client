@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
+import './login.css'
+
 const LogIn = () => {
     const handleSubmitLoginForm = (e) => {
         e.preventDefault()
@@ -12,19 +14,20 @@ const LogIn = () => {
     }
   return (
     <form onSubmit={handleSubmitLoginForm} className="w-70 mt-5 align-items-center d-flex justify-content-center flex-column">
-        <div className="orm-outline row mb-3">
+
+        <div className="form-outline d-flex mb-4">
             
-            <label className="col-sm-3 col-form-label" htmlFor="email">Email</label>
-            <div className='col-sm-9'>
-            <input type="email" name="email" className="form-control" required/>
+            <label className="form-label me-4" htmlFor="email">Email</label>
+            <div className=''>
+                <input type="email" name="email" className="form-control form-width" required/>
             </div>
         </div>
 
-        <div className="form-outline row mb-3">
+        <div className="form-outline d-flex mb-3">
 
-            <label className="col-sm-3 col-form-label" htmlFor="password">Password</label>
-            <div className='col-sm-9'>
-                <input type="password" name="password" className="form-control" required/>
+            <label className="col-form-label me-2" htmlFor="password">Password</label>
+            <div className=''>
+                <input type="password" name="password" className="form-control form-width" required/>
             </div>
         </div>
         <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
