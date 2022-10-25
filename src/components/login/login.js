@@ -13,7 +13,7 @@ const LogIn = () => {
         console.log(email,password)
     }
   return (
-    <form onSubmit={handleSubmitLoginForm} className="w-70 mt-5 align-items-center d-flex justify-content-center flex-column">
+    <form onSubmit={handleSubmitLoginForm} className="w-70 mt-5 align-items-center d-flex justify-content-center flex-column"  >
 
         <div className="form-outline d-flex mb-4">
             

@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
+import {FcGoogle} from 'react-icons/fc';
+import {BsGithub} from 'react-icons/bs';
+import { AuthContext } from '../../contexts/userContext';
 
 const Register = () => {
+
+    const {signInwithEmailAndpassword} = useContext(AuthContext)
+
+    console.log(signInwithEmailAndpassword)
 
     const handleRegistrationForm = (e) =>{
 
@@ -11,12 +18,19 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
 
+        signInwithEmailAndpassword(email, password)
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error)
+        })
         console.log(email,password)
 
     }
   return (
     <form onSubmit={handleRegistrationForm} className="mt-5 align-items-center d-flex justify-content-center flex-column">
-
         <div className="form-outline d-flex mb-3">
             
             <label className="col-form-label me-2" htmlFor="name">Full Name</label>
@@ -24,7 +38,6 @@ const Register = () => {
                 <input type="name" name="name" className="form-control form-width" required/>
             </div>
         </div>
-
         <div className="form-outline d-flex mb-3">
             
             <label className="col-form-label me-5" htmlFor="email">Email</label>
@@ -32,7 +45,6 @@ const Register = () => {
                 <input type="email" name="email" className="form-control form-width" required/>
             </div>
         </div>
-
         <div className="form-outline d-flex mb-3">
 
             <label className="col-form-label me-3" htmlFor="password">Password</label>
@@ -41,26 +53,16 @@ const Register = () => {
             </div>
         </div>
         <button type="submit" className="btn btn-primary btn-block mb-4">Register</button>
-
-
         <div className="text-center">
             <p>Have an account? <NavLink to="/login">Login</NavLink></p>
             <p>or sign up with:</p>
-            {/* <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-facebook-f"></i>
+            
+            <button type="button" className="btn btn-lg btn-link btn-floating mx-1">
+                <FcGoogle />
             </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-google"></i>
+             <button type="button" className="btn btn-lg  btn-link btn-floating mx-1">
+                <BsGithub />
             </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-twitter"></i>
-            </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-github"></i>
-            </button> */}
         </div>
     </form>
   )
