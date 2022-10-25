@@ -7,28 +7,40 @@ import { AuthContext } from '../../contexts/userContext';
 
 const Register = () => {
 
-    const {signInwithEmailAndpassword} = useContext(AuthContext)
+    const {createUser,googleSignIn} = useContext(AuthContext)
 
-    console.log(signInwithEmailAndpassword)
+    console.log(createUser)
 
     const handleRegistrationForm = (e) =>{
-
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
 
-        signInwithEmailAndpassword(email, password)
+        createUser(email, password)
         .then(result => {
             const user = result.user
             console.log(user)
+            form.reset()
         })
         .catch(error => {
             console.log(error)
         })
         console.log(email,password)
-
     }
+
+    const googleSignHadler = () =>{
+        googleSignIn()
+        .then(result => {
+            const user = result.user
+            console.log(user)
+            alert("google Sign added", user.displayName)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
   return (
     <form onSubmit={handleRegistrationForm} className="mt-5 align-items-center d-flex justify-content-center flex-column">
         <div className="form-outline d-flex mb-3">
@@ -57,7 +69,7 @@ const Register = () => {
             <p>Have an account? <NavLink to="/login">Login</NavLink></p>
             <p>or sign up with:</p>
             
-            <button type="button" className="btn btn-lg btn-link btn-floating mx-1">
+            <button type="button" className="btn btn-lg btn-link btn-floating mx-1" onClick={googleSignHadler}>
                 <FcGoogle />
             </button>
              <button type="button" className="btn btn-lg  btn-link btn-floating mx-1">

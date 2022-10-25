@@ -1,15 +1,24 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { NavLink } from 'react-router-dom';
+
+import { AuthContext } from '.././../contexts/userContext'
 
 import './login.css'
 
 const LogIn = () => {
+
+    const { signIn } = useContext(AuthContext)
+
     const handleSubmitLoginForm = (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-
+        signIn(email, password)
+        .then(result =>{
+            const user = result.user
+            console.log(user)
+        })
         console.log(email,password)
     }
   return (
