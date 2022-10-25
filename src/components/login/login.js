@@ -3,23 +3,38 @@ import { NavLink } from 'react-router-dom';
 
 import { AuthContext } from '.././../contexts/userContext'
 
+import {FcGoogle} from 'react-icons/fc';
+import {BsGithub} from 'react-icons/bs';
 import './login.css'
 
 const LogIn = () => {
 
-    const { signIn } = useContext(AuthContext)
+    const { signIn,googleSignIn } = useContext(AuthContext)
 
     const handleSubmitLoginForm = (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
+        
         signIn(email, password)
         .then(result =>{
             const user = result.user
             console.log(user)
         })
         console.log(email,password)
+    }
+
+    const googleSignHadler = () =>{
+        googleSignIn()
+        .then(result => {
+            const user = result.user
+            console.log(user)
+            alert("google Sign added", user.displayName)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
   return (
     <form onSubmit={handleSubmitLoginForm} className="w-70 mt-5 align-items-center d-flex justify-content-center flex-column"  >
@@ -44,22 +59,15 @@ const LogIn = () => {
 
         <div className="text-center">
             <p>Not a member? <NavLink to="/register">Register</NavLink></p>
-            <p>or sign up with:</p>
-            {/* <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-facebook-f"></i>
-            </button>
+            <p>or sign in with:</p>
 
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-google"></i>
+            <button type="button" className="btn btn-lg btn-link btn-floating mx-1" onClick={googleSignHadler}>
+                <FcGoogle />
             </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-twitter"></i>
+             <button type="button" className="btn btn-lg  btn-link btn-floating mx-1">
+                <BsGithub />
             </button>
-
-            <button type="button" className="btn btn-link btn-floating mx-1">
-                <i className="fab fa-github"></i>
-            </button> */}
+            
         </div>
     </form>
   )
