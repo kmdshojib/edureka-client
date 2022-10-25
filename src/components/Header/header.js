@@ -5,7 +5,13 @@ import { AuthContext } from './../../contexts/userContext';
 import {FaUserAlt} from 'react-icons/fa'
 
 const Header = () => {
-  const {user}  = useContext(AuthContext)
+  const {user,logOutUser}  = useContext(AuthContext)
+
+  const handleLogOut = () =>{
+    logOutUser()
+    .then (() => {})
+    .catch(error => console.log(error))
+  }
   
   return (
     <Navbar bg="light" variant="light">
@@ -13,8 +19,8 @@ const Header = () => {
         <Navbar.Brand><NavLink to="/">Edureka</NavLink></Navbar.Brand>
         <Nav className="me-auto">
             {
-              (user && user.uid) ? 
-              <NavLink className="nav-link">Log Out </NavLink> 
+              (user && user?.uid) ? 
+              <NavLink className="nav-link" onClick={handleLogOut}>Log Out </NavLink> 
               : 
               <>
                 <NavLink className="nav-link" to="/login">Login</NavLink>
@@ -24,11 +30,11 @@ const Header = () => {
             }
         </Nav>
         {
-          (user && user.uid) && 
+          (user && user?.uid) && 
           <Nav>
             <p className='me-2'>{user.displayName}</p>
             {
-              user.photoURL ?
+              user?.photoURL ?
               <Image style={{height:"30px",width:"30px"}} roundedCircle src={user.photoURL} />
               :
               <FaUserAlt />

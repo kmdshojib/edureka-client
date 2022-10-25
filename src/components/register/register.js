@@ -7,7 +7,7 @@ import { AuthContext } from '../../contexts/userContext';
 
 const Register = () => {
 
-    const {createUser,googleSignIn} = useContext(AuthContext)
+    const {createUser,googleSignIn,updateUserProfile} = useContext(AuthContext)
 
     console.log(createUser)
 
@@ -16,16 +16,33 @@ const Register = () => {
         const form = e.target
         const email = form.email.value
         const password = form.password.value
+        const photo = form.photoUrl.value
+        const displayName = form.name.value
 
+
+        // create new user
         createUser(email, password)
         .then(result => {
             const user = result.user
             console.log(user)
+            handleUserProfile(displayName,photo)
             form.reset()
+           
         })
         .catch(error => {
             console.log(error)
         })
+        // update current user
+        const handleUserProfile =(name,photoURL) =>{
+            const profile = {
+                displayName: name,
+                photoURL: photoURL,
+            }
+            updateUserProfile(profile)
+            .then(()=>{})
+            .catch(err => console.log(err))
+        }
+        
         console.log(email,password)
     }
 
@@ -44,12 +61,19 @@ const Register = () => {
   return (
     <form onSubmit={handleRegistrationForm} className="mt-5 align-items-center d-flex justify-content-center flex-column">
         <div className="form-outline d-flex mb-3">
-            
             <label className="col-form-label me-2" htmlFor="name">Full Name</label>
             <div className=''>
                 <input type="name" name="name" className="form-control form-width" required/>
             </div>
         </div>
+        
+        <div className="form-outline d-flex mb-3">
+            <label className="col-form-label me-2" htmlFor="photoUrl">Photo URL</label>
+            <div className=''>
+                <input type="name" name="photoUrl" className="form-control form-width" required/>
+            </div>
+        </div>
+
         <div className="form-outline d-flex mb-3">
             
             <label className="col-form-label me-5" htmlFor="email">Email</label>
