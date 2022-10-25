@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "steoates.autoimport",
-        "mgmcdermott.vscode-language-babel"
+        "mgmcdermott.vscode-language-babel",
+        "esbenp.prettier-vscode"
     ]
 }

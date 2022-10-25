@@ -1,0 +1,10 @@
+.course-grid{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:15px;
+}
+.card-img{
+    height: 190px !important;
+    width:290px !important;
+    object-fit:cover !important;
+}
