@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import {FcGoogle} from 'react-icons/fc';
 import {BsGithub} from 'react-icons/bs';
 import { AuthContext } from '../../contexts/userContext';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
@@ -30,7 +31,7 @@ const Register = () => {
            
         })
         .catch(error => {
-            console.log(error)
+            toast.error(error.message)
         })
         // update current user
         const handleUserProfile =(name,photoURL) =>{
@@ -40,7 +41,7 @@ const Register = () => {
             }
             updateUserProfile(profile)
             .then(()=>{})
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err.message))
         }
         
         console.log(email,password)
@@ -54,7 +55,7 @@ const Register = () => {
             alert("google Sign added", user.displayName)
         })
         .catch(error => {
-            console.log(error)
+            toast.error(error.message)
         })
     }
 

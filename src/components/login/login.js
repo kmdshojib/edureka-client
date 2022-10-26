@@ -5,12 +5,12 @@ import { AuthContext } from '.././../contexts/userContext'
 
 import {FcGoogle} from 'react-icons/fc';
 import {BsGithub} from 'react-icons/bs';
+import { toast } from 'react-toastify';
 import './login.css'
 
 const LogIn = () => {
 
     const { signIn,googleSignIn } = useContext(AuthContext)
-
     // react router dom 
     const navigate = useNavigate()
     const location = useLocation()
@@ -30,7 +30,9 @@ const LogIn = () => {
             form.reset()
           
         })
-        .catch(err=>{})
+        .catch(err=>{
+            toast.error(err.message)
+        })
         console.log(email,password)
         
     }
@@ -43,7 +45,7 @@ const LogIn = () => {
             console.log(user)
         })
         .catch(error => {
-            console.log(error)
+            toast.error(error.message)
         })
     }
     navigate(from, {replace: true});
