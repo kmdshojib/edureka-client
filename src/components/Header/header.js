@@ -14,33 +14,39 @@ const Header = () => {
   }
   
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar collapseOnSelect  bg="light" variant="light">
         <Container>
         <Navbar.Brand><NavLink to="/">Edureka</NavLink></Navbar.Brand>
-        <Nav className="me-auto">
-            {
-              (user && user?.uid) ? 
-              <NavLink className="nav-link" onClick={handleLogOut}>Log Out </NavLink> 
-              : 
-              <>
-                <NavLink className="nav-link" to="/login">Login</NavLink>
-                <NavLink className="nav-link" to="/register">Register</NavLink>
-              </>
-            
-            }
-        </Nav>
-        {
-          (user && user?.uid) && 
-          <Nav>
-            <p className='me-2'>{user.displayName}</p>
-            {
-              user?.photoURL ?
-              <Image style={{height:"30px",width:"30px"}} roundedCircle src={user.photoURL} />
-              :
-              <FaUserAlt />
-            }
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+              {
+                (user && user?.uid) ? 
+                <NavLink className="nav-link" onClick={handleLogOut}>Log Out </NavLink> 
+                : 
+                <>
+                  <NavLink className="nav-link" to="/login">Login</NavLink>
+                  <NavLink className="nav-link" to="/register">Register</NavLink>
+                </>
+              
+              }
+              <NavLink className="nav-link" to="/faq">FAQ</NavLink>
+              <NavLink className="nav-link" to="/blog">Blog</NavLink>
           </Nav>
-        }
+          {
+            (user && user?.uid) && 
+            <Nav>
+              <p className='me-2'>{user.displayName}</p>
+              {
+                user?.photoURL ?
+                <Image style={{height:"30px",width:"30px"}} roundedCircle src={user.photoURL} />
+                :
+                <FaUserAlt />
+              }
+            </Nav>
+          }
+        </Navbar.Collapse>
+        
         </Container>
     </Navbar>
   )
