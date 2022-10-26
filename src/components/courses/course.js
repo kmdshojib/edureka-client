@@ -21,7 +21,7 @@ const Course = () => {
                     course.map((item, index) => 
                         (
                             <div className='mb-3' key={index}>
-                                <Link to={`/coursedetails/${item.name}`} className="fw-bold">{item.name}</Link>
+                                <Link to={`/coursedetails/${item.id}`} className="fw-bold">{item.name}</Link>
                             </div>
                         )
                     )
@@ -38,7 +38,7 @@ const Course = () => {
                                     <Card.Title className="fw-bold">{name}</Card.Title>
                                     <Card.Text>Total Lessons: {lesson}</Card.Text>
                                     <Card.Text className="fw-bold text-muted">Course Duration: {time} hours</Card.Text>
-                                    <Button onClick={()=>navigate(`/coursedetails/${name}`)} variant="primary">Show More</Button>
+                                    <Button onClick={()=>navigate(`/coursedetails/${id}`)} variant="primary">Show More</Button>
                                 </Card.Body>
                             </Card>
                         ))

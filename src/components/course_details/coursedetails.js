@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
-import { Image } from 'react-bootstrap'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Button, Image } from 'react-bootstrap'
 
 import "./coursedetails.css"
 
@@ -8,17 +8,24 @@ import "./coursedetails.css"
 const CourseDetails = () => {
     
     const[ description, setDescription] = useState([])
+    const navigate = useNavigate()
+
 
     const param = useParams()
     useEffect(()=>{
-      const url = `http://localhost:5000/coursedetails/${param.name}`
+      const url = `http://localhost:5000/coursedetails/${param.id}`
       fetch(url)
       .then((res) => res.json())
       .then((data) => setDescription(data))
     },[param])
 
+
     const {id,header,instructor,imageUrl,details,lesson,time,feature} = description
-   
+    
+    // useEffect(() =>{
+    //   const list = feature.map(items => <li>{items}</li>)
+    //   setList(list)
+    // },[])
 
     return (
 
@@ -37,6 +44,9 @@ const CourseDetails = () => {
             <ul className='ms-3'>
               <li>{feature}</li>
             </ul>
+         </div>
+         <div>
+            <Button varient="priamry" onClick={() => navigate(`/checkout/${id}`)}>Get Premium Access</Button>          
          </div>
       </div>
     )
