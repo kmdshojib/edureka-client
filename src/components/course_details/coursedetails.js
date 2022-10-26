@@ -17,7 +17,8 @@ const CourseDetails = () => {
       .then((data) => setDescription(data))
     },[param])
 
-    const {id,header,instructor,imageUrl,details,lesson,time} = description
+    const {id,header,instructor,imageUrl,details,lesson,time,feature} = description
+   
 
     return (
 
@@ -32,6 +33,10 @@ const CourseDetails = () => {
             <h2 className='ms-3 mt-3 mb-4'>About The Course</h2>
             <p className='ms-3 me-4 mt-3 w-70 lh-base'>{details}</p>
             <p className='ms-3 text-muted fw-bold mt-3 mb-3'>Instructor : {instructor}</p>
+            <h2 className='ms-3'>What you will learn from this course</h2>
+            <ul className='ms-3'>
+              <li>{feature}</li>
+            </ul>
          </div>
       </div>
     )

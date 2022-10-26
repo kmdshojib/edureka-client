@@ -1,5 +1,5 @@
 import React,{useContext} from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '.././../contexts/userContext'
 
@@ -11,6 +11,12 @@ const LogIn = () => {
 
     const { signIn,googleSignIn } = useContext(AuthContext)
 
+    // react router dom 
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
+    console.log(from)
+   
     const handleSubmitLoginForm = (e) => {
         e.preventDefault()
         const form = e.target
@@ -21,21 +27,28 @@ const LogIn = () => {
         .then(result =>{
             const user = result.user
             console.log(user)
+            form.reset()
+          
         })
+        .catch(err=>{})
         console.log(email,password)
+        
     }
+
 
     const googleSignHadler = () =>{
         googleSignIn()
         .then(result => {
             const user = result.user
             console.log(user)
-            alert("google Sign added", user.displayName)
+            navigate(from, {replace: true});
+        
         })
         .catch(error => {
             console.log(error)
         })
     }
+    navigate(from, {replace: true});
   return (
     <form onSubmit={handleSubmitLoginForm} className="w-70 mt-5 align-items-center d-flex justify-content-center flex-column"  >
 

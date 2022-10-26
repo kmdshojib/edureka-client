@@ -8,6 +8,7 @@ import Register from './components/register/register';
 import Course from './components/courses/course';
 import CourseDetails from './components/course_details/coursedetails';
 import CheckOut  from './components/checkout/checkout';
+import PrivateRoute from './routes/privateroutes';
 
 
 
@@ -31,7 +32,7 @@ function App() {
         },
         {
           path:"/coursedetails/:name",
-          element: <CourseDetails />,
+          element: <PrivateRoute><CourseDetails /></PrivateRoute>,
 
         },
         {
