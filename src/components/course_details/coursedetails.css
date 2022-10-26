@@ -1,0 +1,13 @@
+.course-card{
+    border: 1px solid #ecf1f9;
+    box-shadow: 0px 9px 14px #fbfbfb;
+    border-radius: 10px;
+
+}
+.course-card-bottom{
+    border: 1px solid #ecf1f9;
+    box-shadow: 0px 9px 14px #fbfbfb;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+}
