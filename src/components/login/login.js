@@ -35,8 +35,6 @@ const LogIn = () => {
         .catch(err=>{
             toast.error(err.message)
         })
-        console.log(email,password)
-        
     }
 
 
