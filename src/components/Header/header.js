@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import React,{useContext, useState} from 'react'
 import { Navbar,Container,Nav, Image } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { AuthContext } from './../../contexts/userContext';
@@ -8,12 +8,17 @@ import {FaUserAlt} from 'react-icons/fa'
 const Header = () => {
   const {user,logOutUser}  = useContext(AuthContext)
 
+  const [theme,setTheme] = useState("Light") 
+
   const handleLogOut = () =>{
     logOutUser()
     .then (() => {})
     .catch(error => console.log(error))
   }
-  
+  const handleTheme = () => {
+    const dark = theme === "Light"? "Dark" : "Light"
+    setTheme(dark)
+  }
   return (
     <Navbar collapseOnSelect  bg="light" variant="light">
         <Container>
@@ -34,10 +39,12 @@ const Header = () => {
               <NavLink className="nav-link" to="/faq">FAQ</NavLink>
               <NavLink className="nav-link" to="/blog">Blog</NavLink>
               <NavLink className="nav-link" to="/">Course</NavLink>
+              
           </Nav>
+          <p onClick={handleTheme} className="nav-link">{theme}</p>
           {
             (user && user?.uid) && 
-            <Nav>
+            <Nav >
               <NavLink className="nav-link" to="/checkout">Check Out</NavLink>
               <p className='me-2 nav-link'>{user.displayName}</p>
               {
@@ -46,8 +53,10 @@ const Header = () => {
                 :
                 <FaUserAlt />
               }
+              
             </Nav>
           }
+          
         </Navbar.Collapse>
         
         </Container>
