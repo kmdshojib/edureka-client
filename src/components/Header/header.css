@@ -1,0 +1,11 @@
+.title-header{
+    text-decoration: none !important;
+}
+@media only screen and (max-width:500px){
+    .title-header{
+        font-size: 15px !important;
+    }
+   .font-size-nav{
+    font-size: 12px !important;
+   }
+}

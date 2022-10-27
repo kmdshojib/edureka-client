@@ -15,7 +15,7 @@ const CheckOut = () => {
   const param = useParams()
 
   useEffect(()=>{
-    const url = `http://localhost:5000/coursedetails/${param.id}`
+    const url = `https://eduraca-server.vercel.app/coursedetails/${param.id}`
     fetch(url)
     .then((res) => res.json())
     .then((data) => setCheckoutdetails(data))
@@ -34,7 +34,7 @@ const CheckOut = () => {
           <li className="list-group-item">Price: {price}</li>
         </ul>
         <div className="card-body">
-          <Button varient="primary" className='btn btn-lg offset-5 mb-2 checkout-btn'>Buy</Button>
+          <Button varient="primary" className='btn btn-lg offset-3 checkout-btn'>Buy</Button>
         </div>  
       </div>
     </div>

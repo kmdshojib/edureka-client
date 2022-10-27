@@ -4,9 +4,11 @@ import Course from "../components/courses/course";
 import CourseDetails from "../components/course_details/coursedetails";
 import FAQ from "../components/faq/faq";
 import LogIn from "../components/login/login";
+import NotFound from "../components/notfound 404/notfouund";
 import Register from "../components/register/register";
 import Main from "../layout/main";
 import Blog from './../components/blog/blog';
+import PrivateRoute from './privateroutes';
 
 export const route = createBrowserRouter([
     {
@@ -32,11 +34,7 @@ export const route = createBrowserRouter([
         },
         {
           path:`checkout/:id`,
-          element: <CheckOut />
-        },
-        {
-          path:"/checkout",
-          element: <h3 className="container mt-5 offset-3">No course is selected. please select course from course details page.</h3>
+          element:<PrivateRoute> <CheckOut /></PrivateRoute>
         },
         {
           path:"/faq",
@@ -45,7 +43,12 @@ export const route = createBrowserRouter([
         {
           path:"/blog",
           element: <Blog />
+        },
+        {
+          path: "*",
+          element: <NotFound />
         }
-      ]
+      ],
     }
+    
   ])

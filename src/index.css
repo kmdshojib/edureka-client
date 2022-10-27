@@ -14,3 +14,10 @@ code {
 .footer{
   align-self: flex-end;
 }
+
+@media only screen and (max-width:500px){
+  .check-ot{
+    font-size: 14px;
+    margin-left: 0 !important;
+  }
+}

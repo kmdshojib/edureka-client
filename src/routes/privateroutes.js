@@ -7,6 +7,8 @@ import { AuthContext } from '../contexts/userContext'
       const {user,loading} = useContext(AuthContext)
 
       const location = useLocation()
+
+      console.log(loading)
       
       loading &&  <Spinner animation="border" variant="primary" />
 

@@ -14,7 +14,7 @@ const CourseDetails = () => {
 
     const param = useParams()
     useEffect(()=>{
-      const url = `http://localhost:5000/coursedetails/${param.id}`
+      const url = `https://eduraca-server.vercel.app/coursedetails/${param.id}`
       fetch(url)
       .then((res) => res.json())
       .then((data) => setDescription(data))

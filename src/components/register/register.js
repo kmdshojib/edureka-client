@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 
 import {FcGoogle} from 'react-icons/fc';
 import {BsGithub} from 'react-icons/bs';
@@ -8,9 +8,11 @@ import { toast } from 'react-toastify';
 
 const Register = () => {
 
-    const {createUser,googleSignIn,updateUserProfile} = useContext(AuthContext)
+    const {createUser,googleSignIn,updateUserProfile,gitHubSignIn} = useContext(AuthContext)
 
-    console.log(createUser)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/';
 
     const handleRegistrationForm = (e) =>{
         e.preventDefault()
@@ -58,6 +60,15 @@ const Register = () => {
             toast.error(error.message)
         })
     }
+    const githubSignInHandler = () =>{
+        gitHubSignIn()
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => toast.error(error.message))
+    }
+    navigate(from, {replace: true});
 
   return (
     <form onSubmit={handleRegistrationForm} className="mt-5 align-items-center d-flex justify-content-center flex-column">
@@ -97,7 +108,7 @@ const Register = () => {
             <button type="button" className="btn btn-lg btn-link btn-floating mx-1" onClick={googleSignHadler}>
                 <FcGoogle />
             </button>
-             <button type="button" className="btn btn-lg  btn-link btn-floating mx-1">
+             <button type="button" className="btn btn-lg  btn-link btn-floating mx-1" onClick={githubSignInHandler}>
                 <BsGithub />
             </button>
         </div>
