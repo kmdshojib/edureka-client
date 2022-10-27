@@ -39,7 +39,7 @@ npm start
 ```
 ## Live
 
-- [Eduraka]()
+- [Eduraka](https://educify-as-10.web.app/)
 
 
 ## Authors
