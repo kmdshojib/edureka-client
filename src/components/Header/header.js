@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { AuthContext } from './../../contexts/userContext';
 import {FaUserAlt} from 'react-icons/fa'
 
+
 const Header = () => {
   const {user,logOutUser}  = useContext(AuthContext)
 
@@ -32,11 +33,13 @@ const Header = () => {
               }
               <NavLink className="nav-link" to="/faq">FAQ</NavLink>
               <NavLink className="nav-link" to="/blog">Blog</NavLink>
+              <NavLink className="nav-link" to="/">Course</NavLink>
           </Nav>
           {
             (user && user?.uid) && 
             <Nav>
-              <p className='me-2'>{user.displayName}</p>
+              <NavLink className="nav-link" to="/checkout">Check Out</NavLink>
+              <p className='me-2 nav-link'>{user.displayName}</p>
               {
                 user?.photoURL ?
                 <Image style={{height:"30px",width:"30px"}} roundedCircle src={user.photoURL} />

@@ -14,7 +14,7 @@ const Course = () => {
     },[])
     const navigate = useNavigate()
     return (
-        <div className="container d-flex mt-5">
+        <div className="container d-flex mt-5 mb-5">
             <div className="me-5">
                 <h4>Course</h4>
                 {

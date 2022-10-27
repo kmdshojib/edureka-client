@@ -34,7 +34,7 @@ const CheckOut = () => {
           <li className="list-group-item">Price: {price}</li>
         </ul>
         <div className="card-body">
-          <Button varient="primary" className='btn btn-lg checkout-btn'>Buy</Button>
+          <Button varient="primary" className='btn btn-lg offset-5 mb-2 checkout-btn'>Buy</Button>
         </div>  
       </div>
     </div>

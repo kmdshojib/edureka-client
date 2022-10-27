@@ -35,6 +35,10 @@ export const route = createBrowserRouter([
           element: <CheckOut />
         },
         {
+          path:"/checkout",
+          element: <h3 className="container mt-5 offset-3">No course is selected. please select course from course details page.</h3>
+        },
+        {
           path:"/faq",
           element: <FAQ />
         },
