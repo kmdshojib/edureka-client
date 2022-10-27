@@ -15,6 +15,7 @@ const Header = () => {
     .then (() => {})
     .catch(error => console.log(error))
   }
+  // toggle the theme
   const handleTheme = () => {
     const dark = theme === "Light"? "Dark" : "Light"
     setTheme(dark)
