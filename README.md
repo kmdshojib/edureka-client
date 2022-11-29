@@ -1,7 +1,7 @@
 
-# Edureka client-site
+# Edureka client-client-site
 
-This is a clinet site for an educational website called Edureka.
+This is a client site for an educational website called Edureka.
 
 # Functions
 
